@@ -1,16 +1,20 @@
 import React from "react";
 import { getSmurfs } from "./../actions";
 import { connect } from "react-redux";
+import Smurf from "./Smurf";
 
 export class SmurfDisplay extends React.Component {
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <Smurf />
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    smurfs: state.smurfs,
     isLoading: state.isLoading,
     errors: state.errors,
   };

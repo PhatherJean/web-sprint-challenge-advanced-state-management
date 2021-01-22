@@ -5,15 +5,7 @@ import {
   FETCH_API_SUCCESS,
 } from "./../actions";
 export const initialState = {
-  smurfs: [
-    {
-      id: "",
-      description: "",
-      name: "",
-      nickname: "",
-      position: "",
-    },
-  ],
+  smurfs: [],
   isLoading: false,
   errors: "",
 };
@@ -28,7 +20,7 @@ const reducer = (state = initialState, action) => {
     case FETCH_API_SUCCESS:
       return {
         ...state,
-        smurfs: [...state.smurfs, action.payload],
+        smurfs: action.payload,
         isLoading: false,
       };
     case FETCH_API_FAILED:
