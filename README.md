@@ -23,22 +23,26 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What problem does the context API help solve?
+
    ability to access data needed by a component from a parent component more than 3 step away without propdrilling alot
 
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
    actions- bridging the input from the user and rendering of the app
    reducer-is a one stop shop to hold all of the initial state information that is needed in the app
    store-is a supermarket what is need for different components no matter how deep a component is
 
 3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
    app state- is only changed when there is a change is made that requires the app to update or change.
 
 component state- changes as it is recieving input from user but it change more frequently because of this.
 
 4. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
-5. What is your favorite state management system you've learned and this sprint? Please explain why!
    redux-thunk- action creators that return a function instead of a action
    action-creators- JS that is an obj the explain what has recently happened to state
+
+5. What is your favorite state management system you've learned and this sprint? Please explain why!
    fav- would have to be thunk even though it is a little more confusing I feel that it would be more handy since it still return a action creator as well as the functions
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
@@ -135,7 +139,7 @@ Your finished project must include all of the following requirements:
       _ `./reducers/index.js`
       _ `./actions/index.js`
       x* `./index.js`
-      * `./App.js`
+      x* `./App.js`
       _ `./components/AddForm.js`
       _ `./components/Smurf.js` \* `./components/SmurfDisplay.js`
 - [ ] You completed application should do the following: - Fetch and display data from the included server code on mounting. - Provide the user a form for adding in the Name, Position, Nickname and Description of a new Smurf. - Allow new smurfs to be added to the list when the submit smurf button is pressed. - Displays an error alert when name, position or nickname is not included in the submission. - Include the word "Error" and "name/position/nickname" in the rendered error alert as approprate. - Does NOT display an error alert when description is left blank. - Display an error alert if a smurf is submitted with a name already assigned to a smurf. - Include the word "Error" and the returned server error message in the rendered error alert as approprate. - DO NOT REMOVE ANY data-testid FIELDS FROM THE CODE. These fields are used for internal grading of your sprints. While we don't recommend using testid in most cases, it is necessary our grading systems currently.

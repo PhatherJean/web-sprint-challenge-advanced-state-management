@@ -18,6 +18,7 @@ export const initialState = {
   isLoading: false,
   errors: "",
 };
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_API_START:
@@ -54,7 +55,6 @@ const reducer = (state = initialState, action) => {
         ],
       };
     default:
-      console.log(state);
       return state;
   }
 };
@@ -72,4 +72,4 @@ export default reducer;
 //      x- The end of an api call
 //      x- The adding a smurfs to the smurf list when added into payload
 //      x- Setting Error Text
-//      - Any other state changes you see as necessary
+//      x- Any other state changes you see as necessary

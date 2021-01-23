@@ -5,7 +5,7 @@ import { getSmurfs } from "../actions";
 class Smurf extends React.Component {
   render() {
     const { smurfs } = this.props;
-    console.log("smurf props", smurfs);
+
     return (
       <div data-testid="smurfs" className="card">
         Name:{smurfs[0].name}

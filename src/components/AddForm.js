@@ -1,11 +1,12 @@
 import React from "react";
-
+import { addSmurfs } from "../actions";
+import { connect } from "react-redux";
 class AddForm extends React.Component {
-  // const [values, setValues]=useState({})
-  // handleChange=e=>{
+  componentDidMount() {
+    addSmurfs();
+  }
 
-  // }
-  render() {
+  render(props) {
     return (
       <section>
         <h2>Add Smurf</h2>
@@ -41,7 +42,14 @@ class AddForm extends React.Component {
   }
 }
 
-export default AddForm;
+const mapStateToProps = (state) => {
+  return {
+    smurfs: state.smurfs,
+    isLoading: state.isLoading,
+    errors: state.errors,
+  };
+};
+export default connect(mapStateToProps, { addSmurfs })(AddForm);
 
 //Task List:
 //1. Add in all necessary import components and library methods.

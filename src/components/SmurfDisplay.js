@@ -3,7 +3,7 @@ import { getSmurfs } from "./../actions";
 import { connect } from "react-redux";
 import Smurf from "./Smurf";
 
-export class SmurfDisplay extends React.Component {
+class SmurfDisplay extends React.Component {
   render() {
     return (
       <div>
