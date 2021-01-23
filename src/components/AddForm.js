@@ -1,6 +1,10 @@
 import React from "react";
 
 class AddForm extends React.Component {
+  // const [values, setValues]=useState({})
+  // handleChange=e=>{
+
+  // }
   render() {
     return (
       <section>

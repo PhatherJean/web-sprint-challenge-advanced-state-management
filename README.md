@@ -66,8 +66,8 @@ Go [here](./CodeGrade-webhook.md) to setup the CodeGrade webhook before you begi
 
 ##### GET '/smurfs'
 
-- [ ] Retrieve an array all the Smurfs in the Smurf DB by writing a `GET` to the endpoint `/smurfs`.
-- [ ] Double check that your response from the server is an array of smurfs.
+- [x] Retrieve an array all the Smurfs in the Smurf DB by writing a `GET` to the endpoint `/smurfs`.
+- [x] Double check that your response from the server is an array of smurfs.
 
 ```js
 [
@@ -84,7 +84,7 @@ Go [here](./CodeGrade-webhook.md) to setup the CodeGrade webhook before you begi
 
 ##### POST '/smurfs'
 
-- [ ] Design the functionality to add a smurf to the Smurf DB you'll need all five fields. `name`, `position`, and `nickname`, `description`.
+- [x] Design the functionality to add a smurf to the Smurf DB you'll need all five fields. `name`, `position`, and `nickname`, `description`.
 
 Example of the shape of data to be sent to the `POST` endpoint. Note that id does not need to be sent and will be generated on the server:
 
@@ -134,8 +134,8 @@ Your finished project must include all of the following requirements:
 - [ ] Complete the tasks listed within:
       _ `./reducers/index.js`
       _ `./actions/index.js`
-      _ `./index.js`
-      _ `./App.js`
+      x* `./index.js`
+      * `./App.js`
       _ `./components/AddForm.js`
       _ `./components/Smurf.js` \* `./components/SmurfDisplay.js`
 - [ ] You completed application should do the following: - Fetch and display data from the included server code on mounting. - Provide the user a form for adding in the Name, Position, Nickname and Description of a new Smurf. - Allow new smurfs to be added to the list when the submit smurf button is pressed. - Displays an error alert when name, position or nickname is not included in the submission. - Include the word "Error" and "name/position/nickname" in the rendered error alert as approprate. - Does NOT display an error alert when description is left blank. - Display an error alert if a smurf is submitted with a name already assigned to a smurf. - Include the word "Error" and the returned server error message in the rendered error alert as approprate. - DO NOT REMOVE ANY data-testid FIELDS FROM THE CODE. These fields are used for internal grading of your sprints. While we don't recommend using testid in most cases, it is necessary our grading systems currently.

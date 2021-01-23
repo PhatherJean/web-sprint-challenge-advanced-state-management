@@ -1,34 +1,45 @@
 import {
   ADD_SMURFS,
-  FETCH_API,
+  FETCH_API_START,
   FETCH_API_FAILED,
   FETCH_API_SUCCESS,
 } from "./../actions";
+
 export const initialState = {
-  smurfs: [],
+  smurfs: [
+    {
+      id: "",
+      description: "pat",
+      name: "jack",
+      nickname: "ghosh",
+      position: "ghost",
+    },
+  ],
   isLoading: false,
   errors: "",
 };
-
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_API:
+    case FETCH_API_START:
       return {
         ...state,
         isLoading: true,
       };
+
     case FETCH_API_SUCCESS:
       return {
         ...state,
-        smurfs: action.payload,
+        smurfs: [...state.smurfs, action.payload],
         isLoading: false,
       };
+
     case FETCH_API_FAILED:
       return {
         ...state,
         isLoading: false,
         errors: action.payload,
       };
+
     case ADD_SMURFS:
       return {
         ...state,
@@ -43,6 +54,7 @@ const reducer = (state = initialState, action) => {
         ],
       };
     default:
+      console.log(state);
       return state;
   }
 };
@@ -58,6 +70,6 @@ export default reducer;
 //3. Add in cases to your reducer to handle:
 //      x- The start of an api call
 //      x- The end of an api call
-//      x- The adding a smurf to the smurf list when added into payload
+//      x- The adding a smurfs to the smurf list when added into payload
 //      x- Setting Error Text
 //      - Any other state changes you see as necessary
