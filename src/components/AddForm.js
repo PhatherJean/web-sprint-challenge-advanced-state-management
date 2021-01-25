@@ -2,11 +2,32 @@ import React from "react";
 import { addSmurfs } from "../actions";
 import { connect } from "react-redux";
 class AddForm extends React.Component {
-  componentDidMount() {
-    addSmurfs();
-  }
+  state = {
+    newSmurf: {
+      id: "",
+      name: "",
+      nickname: "",
+      position: "",
+      description: "",
+    },
+  };
 
-  render(props) {
+  addSmurfs = (e) => {
+    e.preventDefault();
+    return this.props.addSmurfs(this.state.newSmurf);
+  };
+
+  handleChange = (e) => {
+    console.log(e.target.name);
+    console.log(e.target.value);
+    console.log("add form", this.state.smurfs);
+    return {
+      // ...this.state.smurf,
+      // {e.target.name : e.target.value}
+    };
+  };
+
+  render() {
     return (
       <section>
         <h2>Add Smurf</h2>

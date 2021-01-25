@@ -3,17 +3,16 @@ import {
   FETCH_API_START,
   FETCH_API_FAILED,
   FETCH_API_SUCCESS,
-} from "./../actions";
+} from "../actions";
 
 export const initialState = {
   smurfs: [
-    {
-      id: "",
-      description: "pat",
-      name: "jack",
-      nickname: "ghosh",
-      position: "ghost",
-    },
+    // {
+    //   description: "pat",
+    //   name: "jack",
+    //   nickname: "ghosh",
+    //   position: "ghost",
+    // },
   ],
   isLoading: false,
   errors: "",
@@ -44,15 +43,9 @@ const reducer = (state = initialState, action) => {
     case ADD_SMURFS:
       return {
         ...state,
-        smurfs: [
-          ...state.smurfs,
-          {
-            description: action.payload,
-            name: action.payload,
-            nickname: action.payload,
-            position: action.payload,
-          },
-        ],
+        smurfs: [...state.smurfs, action.payload],
+        isLoading: false,
+        errors: "",
       };
     default:
       return state;

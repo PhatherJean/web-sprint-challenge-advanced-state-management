@@ -1,30 +1,23 @@
 import React from "react";
-import { connect } from "react-redux";
-import { getSmurfs } from "../actions";
 
 class Smurf extends React.Component {
   render() {
-    const { smurfs } = this.props;
-
+    const { smurf } = this.props;
+    console.log("incoming", smurf.name);
     return (
-      <div data-testid="smurfs" className="card">
-        Name:{smurfs[0].name}
+      <div data-testid="smurf" className="card">
+        <h4> Name: {smurf.name} </h4>
         <br />
-        Nickname:{smurfs[0].nickname}
+        <p>Nickname: {smurf.nickname}</p>
         <br />
-        Position:{smurfs[0].position}
+        <p> Position: {smurf.position}</p>
         <br />
-        Description:{smurfs[0].description}
+        <p>Description: {smurf.description}</p>
       </div>
     );
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    smurfs: state.smurfs,
-  };
-};
-export default connect(mapStateToProps, { getSmurfs })(Smurf);
+export default Smurf;
 
 //Task List:
 //1. Access smurfs to be displayed through props.

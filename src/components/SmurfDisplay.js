@@ -5,9 +5,14 @@ import Smurf from "./Smurf";
 
 class SmurfDisplay extends React.Component {
   render() {
+    const { smurfs } = this.props;
+    console.log("outgoing", smurfs);
     return (
       <div>
-        <Smurf />
+        <button onClick={this.props.getSmurfs}>Test</button>
+        {smurfs[0].map((smurf) => (
+          <Smurf key={smurf.id} smurf={smurf} />
+        ))}
       </div>
     );
   }
@@ -15,6 +20,7 @@ class SmurfDisplay extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    smurfs: state.smurfs,
     isLoading: state.isLoading,
     errors: state.errors,
   };

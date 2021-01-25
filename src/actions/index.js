@@ -7,11 +7,13 @@ export const FETCH_API_SUCCESS = "FETCH_API_SUCCESS";
 export const POST_API_SUCCESS = "POST_API_SUCCESS";
 export const ADD_SMURFS = "ADD_SMURFS";
 
+console.log("start api call");
 export const getSmurfs = () => (dispatch) => {
   dispatch({ type: FETCH_API_START });
   axios
     .get("http://localhost:3333/smurfs")
     .then((resp) => {
+      console.log(resp);
       dispatch({ type: FETCH_API_SUCCESS, payload: resp.data });
     })
     .catch((err) => {
@@ -20,21 +22,29 @@ export const getSmurfs = () => (dispatch) => {
     });
 };
 
-export const addSmurfs = () => (dispatch) => {
-  dispatch({ type: ADD_SMURFS });
-  axios
-    .post("http://localhost:3333/smurfs")
-    .then((res) => {
-      dispatch({
-        type: POST_API_SUCCESS,
-        payload: res.data,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      dispatch({ type: POST_API_FAILED, payload: err.response.code });
-    });
+export const addSmurfs = (newSmurf) => {
+  console.log(newSmurf);
+  return {
+    type: ADD_SMURFS,
+    payload: newSmurf,
+  };
 };
+
+// export const addSmurfs = () => (dispatch) => {
+//   dispatch({ type: ADD_SMURFS });
+//   axios
+//     .post("http://localhost:3333/smurfs")
+//     .then((res) => {
+//       dispatch({
+//         type: POST_API_SUCCESS,
+//         payload: res.data,
+//       });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       dispatch({ type: POST_API_FAILED, payload: err.response.code });
+//     });
+// };
 
 //Task List:
 //1. Add fetch smurfs action:
