@@ -42,6 +42,8 @@ const addSmurf = (newSmurf) => (dispatch) => {
       console.log("post error", err.response.data);
       dispatch({ type: POST_API_FAILURE, payload: err.response.data });
     });
+  //load new list of smurfs
+  dispatch({ type: FETCH_DATA_START });
 };
 export default addSmurf;
 //Task List:
