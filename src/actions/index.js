@@ -1,7 +1,51 @@
-import axios from 'axios';
+import axios from "axios";
 
+//Fetching initial data from api
+export const FETCH_DATA_START = "FETCH_DATA_START";
+export const FETCH_DATA_SUCCESS = "FETCH_DATA_SUCCESS";
+export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
+
+// Adding smurf to the DB
+export const ADD_SMURF = "ADD_SMURF";
+
+//POSTing failure or success
+export const POST_API_SUCCESS = "POST_API_SUCCESS";
+export const POST_API_FAILURE = "POST_API_FAILURE";
+
+// Retrieve smurfs
+export const retrieveSmurfs = () => (dispatch) => {
+  // show is loading screen to get data
+  dispatch({ type: FETCH_DATA_START });
+  //axios call to get smurfs
+  axios
+    .get("http://localhost:3333/smurfs")
+    .then((res) => {
+      dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const addSmurf = (newSmurf) => (dispatch) => {
+  //Add new smurf to the array
+  dispatch({ type: ADD_SMURF, payload: newSmurf });
+
+  //Add new smurf to the database
+  axios
+    .post("http://localhost:3333/smurfs", newSmurf)
+    .then((res) => {
+      console.log("post success", res);
+      dispatch({ type: POST_API_SUCCESS, payload: res.data });
+    })
+    .catch((err) => {
+      console.log("post error", err);
+      dispatch({ type: POST_API_FAILURE, payload: err.response.code });
+    });
+};
+export default addSmurf;
 //Task List:
-//1. Add fetch smurfs action: 
+//1. Add fetch smurfs action:
 //              - fetch and return initial list of smurfs
 //              - dispatch actions that indicate if we are waiting for a server response
 //              - dispatch an error text action if an error is returned from the server
