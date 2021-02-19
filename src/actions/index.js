@@ -23,7 +23,7 @@ export const retrieveSmurfs = () => (dispatch) => {
       dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({ type: FETCH_DATA_FAILURE, payload: err.response.data });
     });
 };
 
@@ -39,8 +39,8 @@ const addSmurf = (newSmurf) => (dispatch) => {
       dispatch({ type: POST_API_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log("post error", err);
-      dispatch({ type: POST_API_FAILURE, payload: err.response.code });
+      console.log("post error", err.response.data);
+      dispatch({ type: POST_API_FAILURE, payload: err.response.data });
     });
 };
 export default addSmurf;

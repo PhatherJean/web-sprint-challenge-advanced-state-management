@@ -3,14 +3,41 @@ import { connect } from "react-redux";
 import addSmurf from "../actions";
 
 class AddForm extends React.Component {
-  render() {
-    console.log("add form", this.props);
-    const { newSmurf } = this.props;
+  state = {
+    newSmurf: {
+      id: "",
+      name: "",
+      nickname: "",
+      position: "",
+      description: "",
+    },
+  };
 
-    return (
+  //take type info from form
+  handleChange = (e) => {
+    this.setState({
+      ...this.state,
+      newSmurf: {
+        ...this.state.newSmurf,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+
+  //submit new smurf
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.addSmurf(this.state.newSmurf);
+    // console.log(this.state.newSmurf);
+  };
+  render() {
+    const { isLoading, error } = this.props;
+    return isLoading ? (
+      <h3>Smurf villiage welcomes you....</h3>
+    ) : (
       <section>
         <h2>Add Smurf</h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name:</label>
             <br />
@@ -28,17 +55,17 @@ class AddForm extends React.Component {
               name="description"
               id="description"
             />
+            {error === "" ? null : (
+              <div
+                data-testid="errorAlert"
+                className="alert alert-danger"
+                role="alert"
+              >
+                Error:{""} {error}{" "}
+              </div>
+            )}
           </div>
 
-          {this.props.error === "" ? null : (
-            <div
-              data-testid="errorAlert"
-              className="alert alert-danger"
-              role="alert"
-            >
-              Error:{""} {this.props.error}{" "}
-            </div>
-          )}
           <button>Submit Smurf</button>
         </form>
       </section>
@@ -48,13 +75,15 @@ class AddForm extends React.Component {
 const mapStateToProps = (state) => {
   return {
     error: state.error,
-    newSmurf: {
-      id: "",
-      name: "",
-      nickname: "",
-      position: "",
-      description: "",
-    },
+    smurfs: state.smurfs,
+    isLoading: state.isLoading,
+    // newSmurf: {
+    //   id: "",
+    //   name: "",
+    //   nickname: "",
+    //   position: "",
+    //   description: "",
+    // },
   };
 };
 

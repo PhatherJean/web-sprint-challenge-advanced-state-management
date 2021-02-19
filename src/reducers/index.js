@@ -3,6 +3,8 @@ import {
   FETCH_DATA_START,
   FETCH_DATA_SUCCESS,
   FETCH_DATA_FAILURE,
+  POST_API_SUCCESS,
+  POST_API_FAILURE,
 } from "../actions";
 
 export const initialState = {
@@ -38,6 +40,20 @@ const reducer = (state = initialState, action) => {
         smurfs: [...state.smurfs, action.payload],
         error: "",
       };
+
+    //API post results
+
+    case POST_API_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        smurfs: [...state.smurfs, action.payload],
+      };
+    case POST_API_FAILURE:
+      return {
+        error: action.payload,
+      };
+
     default:
       return state;
   }

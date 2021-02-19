@@ -10,7 +10,6 @@ export class SmurfDisplay extends React.Component {
     const { isLoading, smurfs } = this.props;
     return (
       <div>
-        <button onClick={() => this.props.retrieveSmurfs()}>test</button>{" "}
         {isLoading ? (
           <h3>Fetching Smurfs...</h3>
         ) : (
