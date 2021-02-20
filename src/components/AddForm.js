@@ -32,6 +32,7 @@ class AddForm extends React.Component {
   };
   render() {
     const { isLoading, error } = this.props;
+    console.log(error);
     return isLoading ? (
       <h3>Smurf villiage welcomes you....</h3>
     ) : (
@@ -41,13 +42,28 @@ class AddForm extends React.Component {
           <div className="form-group">
             <label htmlFor="name">Name:</label>
             <br />
-            <input onChange={this.handleChange} name="name" id="name" />
+            <input
+              onChange={this.handleChange}
+              // required
+              name="name"
+              id="name"
+            />
             <label htmlFor="nickname">Nickname:</label>
             <br />
-            <input onChange={this.handleChange} name="nickname" id="nickname" />
+            <input
+              onChange={this.handleChange}
+              // reqired
+              name="nickname"
+              id="nickname"
+            />
             <label htmlFor="position">Position:</label>
             <br />
-            <input onChange={this.handleChange} name="position" id="position" />
+            <input
+              onChange={this.handleChange}
+              // required
+              name="position"
+              id="position"
+            />
             <label htmlFor="description">Description:</label>
             <br />
             <input
@@ -55,13 +71,18 @@ class AddForm extends React.Component {
               name="description"
               id="description"
             />
-            {error === "" ? null : (
+
+            {this.state.newSmurf.name !== "" &&
+            this.state.newSmurf.nickname !== "" &&
+            this.state.newSmurf.position !== "" ? (
+              ""
+            ) : (
               <div
                 data-testid="errorAlert"
                 className="alert alert-danger"
                 role="alert"
               >
-                Error:{""} {error}{" "}
+                Error:{error}
               </div>
             )}
           </div>

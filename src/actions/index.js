@@ -35,12 +35,10 @@ const addSmurf = (newSmurf) => (dispatch) => {
   axios
     .post("http://localhost:3333/smurfs", newSmurf)
     .then((res) => {
-      console.log("post success", res);
       dispatch({ type: POST_API_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log("post error", err.response.data);
-      dispatch({ type: POST_API_FAILURE, payload: err.response.data });
+      dispatch({ type: POST_API_FAILURE, payload: err.response.data.Error });
     });
   //load new list of smurfs
   dispatch({ type: FETCH_DATA_START });

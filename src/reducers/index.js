@@ -47,10 +47,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        smurfs: [...state.smurfs, action.payload],
+        smurfs: action.payload,
       };
     case POST_API_FAILURE:
       return {
+        ...state,
+        isLoading: false,
         error: action.payload,
       };
 
